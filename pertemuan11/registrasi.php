@@ -1,61 +1,34 @@
 <?php
 
 require "functions.php";
-
-if(isset($_POST['submit'])){
-
-	if(tambah($_POST)>0){
-		echo "
-		<script>
-			alert('data berhasil ditambahkan');
-			document.location.href = 'index.php';
-		</script>";
-
-	}else{
-
-		echo "
-		<script>
-			alert('data gagal ditambahkan!');
-			document.location.href = 'index.php';
-		</script>";
-	}
-}
 ?>
 <!doctype html>
 <html lang="en">
   <head>
     
-    <title>Tambah data mahasiswa</title>
+    <title>Halaman Registrasi</title>
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
 	  <main>
-      <h1>Tambah data mahasiswa</h1>
+      <h1>Registrasi</h1>
       
 	      <form method="post" action="" enctype="multipart/form-data">
 				<ul class="input-list">
 					<li>
-						<label for="nim">Nim</label>
-						<input type="text" name="nim" id="nim">
+						<label for="username">Username</label>
+						<input type="text" name="username" id="username">
 					</li>
 					<li>
-						<label for="nama">Nama</label>
-						<input type="text" name="nama" id="nama">
+						<label for="password">Password</label>
+						<input type="password" name="password" id="password">
 					</li>
 					<li>
-						<label for="email">Email</label>
-						<input type="email" name="email" id="email">
+						<label for="konfpass">Konfirmasi Password</label>
+						<input type="password" name="konfpass" id="konfpass">
 					</li>
 					<li>
-						<label for="jurusan">Jurusan</label>
-						<input type="text" name="jurusan" id="jurusan">
-					</li>
-					<li>
-						<label for="gambar">Gambar</label>
-						<input type="file" name="gambar" id="gambar">
-					</li>
-					<li>
-						<button type="submit" name="submit" class="green">Tambah Data!</button>
+						<button type="submit" name="submit" class="green">Daftar!</button>
 					</li>
 				</ul>
       </form>
