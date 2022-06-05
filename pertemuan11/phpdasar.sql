@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 21, 2022 at 09:52 AM
+-- Generation Time: Jun 05, 2022 at 03:16 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -41,10 +41,29 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nim`, `email`, `jurusan`, `gambar`) VALUES
-(10, 'Winata Pranat', 'A2.2000113', 'A2.2000113@mhs.stmik-sumedang.ac.id ', 'Teknik Informatika', 'pas_foto_winata.png'),
+(10, 'Winata Pranata', 'A2.2000113', 'A2.2000113@mhs.stmik-sumedang.ac.id ', 'Teknik Informatika', '629cac7fbed69.png'),
 (11, ' Winaya Zarkasih ', 'A2.2000114', 'A2.2000114@mhs.stmik-sumedang.ac.id', 'Teknik Informatika', 'pas_foto_winaya.png'),
 (13, 'Albi Fajar Ramadhan', 'A2.2000003', 'albifajarramadhan@gmail.com', 'Teknik Informatika', 'pas_foto_albi.png'),
 (14, 'Bagas Sudam Darmana', 'A2.2000017', 'A2.2000017@mhs.stmik-sumedang.ac.id', 'Teknik Informatika', 'pas_foto_bagas.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+(2, 'admin', '$2y$10$RARhPcl.mHOVMHDWHT2c3uMOFJ0oaupdcFhXXDlwjwNl7QSxpc5Eu');
 
 --
 -- Indexes for dumped tables
@@ -57,6 +76,12 @@ ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -64,7 +89,13 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
