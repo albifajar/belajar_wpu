@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require "functions.php";
 
 
@@ -15,10 +15,10 @@ if( isset($_POST['login']) ) {
 
 	if( mysqli_num_rows($cek_username) === 1 ) {
 		$row = mysqli_fetch_assoc($cek_username);
-        var_dump(password_verify($password, $row['password']));
 		// cek password
 		if( password_verify($password, $row['password']) ) {
-			$_SESSION['username'] = $_POST['username'];
+			$_SESSION['login'] = $_POST;
+            $_SESSION['login']['show_alert'] = true;
 			header('Location: index.php');
 			exit;
 		}

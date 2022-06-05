@@ -1,6 +1,10 @@
 <?php 
-require 'functions.php';
-
+session_start();
+require "functions.php";
+if( !isset($_SESSION['login']) ) {
+	header("Location: login.php");
+	exit;
+}
 $id = $_GET["id_ubah"];
 $mhs = query("SELECT * FROM mahasiswa WHERE id = $id")[0];
 

@@ -1,5 +1,19 @@
 <?php
+session_start();
 require "functions.php";
+$login = [];
+if( !isset($_SESSION['login']) ) {
+	header("Location: login.php");
+	exit;
+}else{
+  $login = $_SESSION['login'];
+  
+  $show_alert = $_SESSION['login']['show_alert'];
+
+  $_SESSION['login']['show_alert'] = false;
+  
+}
+
 
 $mahasiswa = query("SELECT * FROM mahasiswa");
 
@@ -20,12 +34,20 @@ if(isset($_GET['keyword'])){
 <html lang="en">
   <head>
     
+    <?php if($show_alert):?>
+      <script type="text/javascript"> 
+        alert("Selamat datang <?= $login['username']; ?>!");</script>
+      <?php endif;?>
+
     <title>Halaman Admin</title>
     <link rel="stylesheet" href="./style.css?v=12">
   </head>
   <body>
     <main>
-      <h1>Daftar Mahasiswa FTI UNSAP</h1>
+      <div class="d-flex" style="align-items: center; justify-content: space-between;">
+        <h1>Daftar Mahasiswa FTI UNSAP</h1>
+        <a href="logout.php">Logout</a>
+      </div>
       <div class="d-flex justify-content-between" style="margin-bottom: 20px">
         <a href="tambah.php" style="display: inline-block;">Tambah</a>
         
