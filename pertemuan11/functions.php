@@ -127,7 +127,7 @@ function register($data){
 
     if($password !== $confpass){
         echo "<script>
-                alert('username sudah terdaftar!');
+                alert('konfirmasi yang anda masukan salah!');
             </script>";
         return false;    
     }
@@ -135,7 +135,7 @@ function register($data){
     $password =  password_hash($password, PASSWORD_DEFAULT);
 
     mysqli_query($connection, 
-        "INSERT INTO `user` VALUES ('2', '$username', '$password')"
+        "INSERT INTO `user`(`username`, `password`) VALUES ('$username', '$password')"
     );
 
     return mysqli_affected_rows($connection);
