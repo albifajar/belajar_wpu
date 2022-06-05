@@ -42,7 +42,7 @@ function ubah($data) {
     if($_FILES["gambar"]["error"] !== 4){
         $gambar = upload();
     }
-    
+
 	$query = "UPDATE mahasiswa SET nim = '$nim', nama = '$nama', email = '$email', jurusan = '$jurusan', gambar = '$gambar' WHERE id = $id";
 
 	mysqli_query($connection, $query);
@@ -105,4 +105,38 @@ function upload(){
     move_uploaded_file($tmp_name, 'img/'.$new_name);
 
     return $new_name;
+}
+
+function register($data){
+    global $connection;
+
+    $username = strtolower(stripslashes($data['username']));
+    $password = mysqli_real_escape_string($connection, $data['password']);
+    $confpass = mysqli_real_escape_string($connection, $data['confpass']);
+
+
+    $result = mysqli_query($connection,
+        "SELECT username FROM user WHERE username = '$username'"
+    );
+    if(mysqli_fetch_assoc($result)){
+        echo "<script>
+                alert('username yang anda masukan tidak tersedia, silahkan menggunakan username lain');
+            </script>";
+        return false; 
+    }
+
+    if($password !== $confpass){
+        echo "<script>
+                alert('username sudah terdaftar!');
+            </script>";
+        return false;    
+    }
+
+    $password =  password_hash($password, PASSWORD_DEFAULT);
+
+    mysqli_query($connection, 
+        "INSERT INTO `user` VALUES ('2', '$username', '$password')"
+    );
+
+    return mysqli_affected_rows($connection);
 }
