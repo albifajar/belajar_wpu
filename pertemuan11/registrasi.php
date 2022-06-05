@@ -41,6 +41,8 @@ if( isset($_POST["register"]) ) {
 				</li>
 			</ul>
       </form>
+
+      <a href="login.php">Saya sudah punya akun!</a>
 	  <main>
   </body>
 </html>
