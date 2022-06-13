@@ -1,0 +1,124 @@
+* {
+    color: #232323;
+}
+a {
+ color: #6045f8;   
+}
+main{
+    width: 100%;
+    padding-left: 2rem; 
+    padding-right: 2rem;
+    padding-bottom: 3rem;
+    box-sizing: border-box !important;
+}
+ul.input-list{
+    max-width: 24rem;
+    padding-left: 0rem;
+}
+ul.input-list li { 
+    list-style: none;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+ul.input-list li input,
+ul.input-list li button{
+    padding-top: .125rem;
+    padding-bottom: .125rem;
+}
+
+.btn,
+ul.input-list li button{
+    padding-top: .125rem;
+    padding-bottom: .125rem;
+    background-color: #fefefa;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    border-radius: 3px;
+    display: inline-block;
+}
+ul.input-list li button.blue{
+    background-color: #cfc9f3;
+    border: solid 1px #6045f8;
+    color: #222;
+}
+
+.btn.green,
+ul.input-list li button.green{
+    background-color: #c9f3d7;
+    border: solid 1px #45f85d;
+    color:#222
+}
+
+ul.input-list li button[type="submit"]{
+    cursor: pointer;
+}
+
+.table-style td{
+    border: 1px solid #222;
+}
+
+.table-style th{
+    border: 1px solid #222;
+    background-color: #dedede;
+}
+
+.table-style{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #222;
+}
+
+.d-flex{
+    display: flex
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.py-3{
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+
+.reset-btn{
+    display: block; 
+    position: absolute; 
+    right:0.3rem; 
+    top: 0; 
+    bottom:0; 
+    font-size:12px; 
+    text-decoration: none; 
+    display: flex; 
+    align-items: center;
+}
+
+ul.nav{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+ul.nav a{
+    text-decoration: none;
+    color: #222;
+}
+ul.nav.nav-tabs li{
+    border: 1px solid #222;
+    padding: 0.25rem 0.5rem;
+}
+
+ul.nav.nav-tabs li.active{
+    background: #dedede;
+}
+ul.nav.nav-tabs li.prev-disabled{
+    background: #dedede;
+}
