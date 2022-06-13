@@ -14,8 +14,14 @@ if( !isset($_SESSION['login']) ) {
   
 }
 
+$jumlah_data_perhalaman = 3;
+$jumlah_data            = query("SELECT COUNT(*) as count FROM mahasiswa")[0]['count'];
+$jumlah_halaman         = ceil($jumlah_data/$jumlah_data_perhalaman);
+$halaman_aktif          = intval(isset($_GET["halaman"])? $_GET["halaman"] : 1);
+$awal_data              = ($jumlah_data_perhalaman * $halaman_aktif) - $jumlah_data_perhalaman;
 
-$mahasiswa = query("SELECT * FROM mahasiswa");
+
+$mahasiswa = query("SELECT * FROM mahasiswa LIMIT $awal_data, $jumlah_data_perhalaman");
 
 $keyword = "";
 if(isset($_GET['keyword'])){
@@ -40,7 +46,9 @@ if(isset($_GET['keyword'])){
       <?php endif;?>
 
     <title>Halaman Admin</title>
-    <link rel="stylesheet" href="./style.css?v=12">
+    <link rel="stylesheet" href="./style.css?v=12.12">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/script.js?v=1"></script>
   </head>
   <body>
     <main>
@@ -53,15 +61,43 @@ if(isset($_GET['keyword'])){
         
         <form method="get" action="" class="d-flex" style="gap:.5rem;">
           <div style="position: relative;">
-            <input type="text" name="keyword" value="<?=$keyword?>">
-            <?if(isset($_GET['keyword'])):?>
-              <a href="?" class="reset-btn">Reset</a>
-            <?php endif; ?>
+            <input type="text" name="keyword" value="<?=$keyword?>" id="keyword" placeholder="Pencarian...">
+            
+            <a href="?" class="reset-btn" id="pencarian-reset">Reset</a>
+            
           </div>
-          <div><button class="btn green" type="submit" style="display: inline-block">Cari</button></div>
+          <div><button class="btn green" type="submit" style="display: inline-block" id="tombol-cari">Cari</button></div>
         </form>
 
       </div>
+      <ul class="nav nav-tabs" id="mynav">
+        <?php if($halaman_aktif > 1):?>
+        <li>
+          <a href="?halaman=<?=$halaman_aktif - 1?>"><</a>
+        </li>
+        <?php else:?>
+        <li class="prev-disabled">
+          <a href="#"><</a>
+        </li>
+        <?php endif?>
+
+        <?php for($i = 1; $i <= $jumlah_halaman; $i++):?>
+          <li class="<?=($i == $halaman_aktif)? 'active': '';?>">
+            <a href="?halaman=<?=$i?>"><?=$i?></a>
+          </li>
+        <?php endfor;?>
+
+        <?php if($halaman_aktif < $jumlah_halaman):?>
+        <li>
+          <a href="?halaman=<?=$halaman_aktif + 1?>?>">></a>
+        </li>
+        <?php else:?>
+        <li class="prev-disabled">
+          <a href="#">></a>
+        </li>
+        <?php endif?>
+      </ul>
+      <div id="container">
         <table class="table-style" cellspacing="0" cellpadding="10" style="width: 100%;">
             <tr>
                 <th class="text-center">No.</th>
@@ -101,6 +137,7 @@ if(isset($_GET['keyword'])){
               </tr>
             <?php endif?>
         </table>
+      <div>
     </main>
   </body>
 </html>

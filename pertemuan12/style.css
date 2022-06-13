@@ -2,7 +2,7 @@
     color: #232323;
 }
 a {
- color: #6045f8 !important;   
+ color: #6045f8;   
 }
 main{
     width: 100%;
@@ -99,4 +99,26 @@ ul.input-list li button[type="submit"]{
     text-decoration: none; 
     display: flex; 
     align-items: center;
+}
+
+ul.nav{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+ul.nav a{
+    text-decoration: none;
+    color: #222;
+}
+ul.nav.nav-tabs li{
+    border: 1px solid #222;
+    padding: 0.25rem 0.5rem;
+}
+
+ul.nav.nav-tabs li.active{
+    background: #dedede;
+}
+ul.nav.nav-tabs li.prev-disabled{
+    background: #dedede;
 }
