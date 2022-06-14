@@ -47,8 +47,6 @@ if(isset($_GET['keyword'])){
 
     <title>Halaman Admin</title>
     <link rel="stylesheet" href="./style.css?v=12.12">
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/script.js?v=1"></script>
   </head>
   <body>
     <main>
@@ -139,5 +137,7 @@ if(isset($_GET['keyword'])){
         </table>
       <div>
     </main>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/script.js?v=1"></script>
   </body>
 </html>

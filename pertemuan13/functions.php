@@ -36,7 +36,7 @@ function ubah($data) {
 	$nama = htmlspecialchars($data["nama"]);
 	$email = htmlspecialchars($data["email"]);
 	$jurusan = htmlspecialchars($data["jurusan"]);
-    $gambar = htmlspecialchars($data["gambarlama"]);
+    $gambar = empty($data["gambarlama"])?'nophoto.jpg':htmlspecialchars($data["gambarlama"]);
 
     if($_FILES["gambar"]["error"] !== 4){
         $gambar = upload();
@@ -52,7 +52,12 @@ function ubah($data) {
 
 function hapus($id){
     global $connection;
+    $mhs = query("SELECT * FROM mahasiswa WHERE id = $id")[0];
 
+    if($mhs['gambar'] !== 'nophoto.jpg'){
+        unlink("img/".$mhs['gambar']);
+    }
+    
     mysqli_query($connection, "DELETE FROM `mahasiswa` WHERE id = '$id'");    
     
     return mysqli_affected_rows($connection);
@@ -69,11 +74,7 @@ function upload(){
 
     // jika user tidak pilih gambar
 	if( $error == 4 ) {
-		echo "<script>
-				alert('harap pilih gambar terlebih dahulu!');
-				document.location.href = 'tambah.php';
-			  </script>";
-		return false;
+		return 'nophoto.jpg';
 	}
 
     //cek format yang didukung
@@ -95,7 +96,13 @@ function upload(){
 			  </script>";
 		return false;        
     }
-
+    // //Cek tipe file
+    // if($type != 'image/jpeg' || $type != 'image/png' || $type != 'image/jpg'){
+    //     echo "<script>
+    //         alert('yang anda upload bukan gambar!');
+    //     </script>";
+    //    return false;    
+    // }
     //generate nama file baru
     $new_name = uniqid();
     $new_name .= '.';
