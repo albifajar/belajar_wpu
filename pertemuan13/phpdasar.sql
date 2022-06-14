@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 05, 2022 at 03:16 PM
+-- Generation Time: Jun 14, 2022 at 03:33 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -43,8 +43,9 @@ CREATE TABLE `mahasiswa` (
 INSERT INTO `mahasiswa` (`id`, `nama`, `nim`, `email`, `jurusan`, `gambar`) VALUES
 (10, 'Winata Pranata', 'A2.2000113', 'A2.2000113@mhs.stmik-sumedang.ac.id ', 'Teknik Informatika', '629cac7fbed69.png'),
 (11, ' Winaya Zarkasih ', 'A2.2000114', 'A2.2000114@mhs.stmik-sumedang.ac.id', 'Teknik Informatika', 'pas_foto_winaya.png'),
-(13, 'Albi Fajar Ramadhan', 'A2.2000003', 'albifajarramadhan@gmail.com', 'Teknik Informatika', 'pas_foto_albi.png'),
-(14, 'Bagas Sudam Darmana', 'A2.2000017', 'A2.2000017@mhs.stmik-sumedang.ac.id', 'Teknik Informatika', 'pas_foto_bagas.png');
+(28, 'Bagas Sudam Darmana', 'A2.2000017', 'A2.2000017@mhs.stmik-sumedang.ac.id', 'Teknik Informatika', '62a7e4a97b6ef.png'),
+(29, 'Albi Fajar Ramadhan', 'A2.2000003', 'a2.2000003@mhs.stmik-sumedang.ac.id', 'Teknik Informatika', '62a7e4fdda8c5.png'),
+(30, 'testing', 'testing', 'testing@gmail.com', 'Teknik Informatika', 'nophoto.jpg');
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
-(2, 'admin', '$2y$10$RARhPcl.mHOVMHDWHT2c3uMOFJ0oaupdcFhXXDlwjwNl7QSxpc5Eu');
+(2, 'admin', '$2y$10$RARhPcl.mHOVMHDWHT2c3uMOFJ0oaupdcFhXXDlwjwNl7QSxpc5Eu'),
+(3, 'admin123', '$2y$10$MEb2D7JPhhIix7HQNG8Of.2kPLnoXGj5e2kaP2PTG6f9HHGwlwQF.'),
+(4, 'admin12', '$2y$10$OA8ozaGjSdm7DAYEDTxWXOxL294XI.cMVpSlyVng8Ra6N6EE31ZYO');
 
 --
 -- Indexes for dumped tables
@@ -89,13 +92,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
